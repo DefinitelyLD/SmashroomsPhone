@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    //TODO: REFACTOR (Split scripts) + mb character renderer
     public static GameController instance;
     [SerializeField] SpriteRenderer character;
 

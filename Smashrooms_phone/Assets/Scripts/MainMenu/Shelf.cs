@@ -5,21 +5,13 @@ using TMPro;
 public class Shelf : MonoBehaviour
 {
     public static Shelf instance;
-    [SerializeField] Button fighter1;
-    [SerializeField] Button fighter2;
+    [SerializeField] Button fighter1, fighter2;
 
-    [SerializeField] TextMeshProUGUI strengthText;
-    [SerializeField] TextMeshProUGUI agilityText;
-    [SerializeField] TextMeshProUGUI intelligenceText;
-    [SerializeField] TextMeshProUGUI enduranceText;
+    [SerializeField] TextMeshProUGUI strengthText, agilityText, intelligenceText, enduranceText;
 
-    [SerializeField] Slider strengthSlider;
-    [SerializeField] Slider agilitySlider;
-    [SerializeField] Slider intelligenceSlider;
-    [SerializeField] Slider enduranceSlider;
+    [SerializeField] Slider strengthSlider, agilitySlider, intelligenceSlider, enduranceSlider;
 
-    [SerializeField] Image mushroomImage;
-    [SerializeField] Image islandImage;
+    [SerializeField] Image mushroomImage, islandImage;
 
     public MushroomType mushroomType;
 

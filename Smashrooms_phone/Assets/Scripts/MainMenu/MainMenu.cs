@@ -3,28 +3,20 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    //TODO: MB REFACTOR + REMOVE INSTANCE
     public static MainMenu instance;
     [SerializeField] GameObject menuAdd;
     [SerializeField] GameObject character;
 
-    [SerializeField] GameObject menuButtons;
-    [SerializeField] GameObject sideButtons;
-    [SerializeField] GameObject playButton;
-    [SerializeField] GameObject backButton;
-    [SerializeField] GameObject shelfButton; 
-    [SerializeField] GameObject profileBar;
-    [SerializeField] GameObject mTokens;
-    [SerializeField] GameObject sTokens;
-
+    [SerializeField] GameObject menuButtons, sideButtons, playButton ,backButton, shelfButton; 
+    [SerializeField] GameObject mTokens, sTokens;
+    [SerializeField] GameObject profileBar, fractionEmblem;
     [SerializeField] GameObject shelf;
 
-    [SerializeField] Sprite soundOnIcon;
-    [SerializeField] Sprite soundOffIcon;
+    [SerializeField] Sprite soundOnIcon, soundOffIcon;
 
-    [SerializeField] Button soundButton;
-    [SerializeField] Button play;
+    [SerializeField] Button soundButton, play;
 
-    [SerializeField] GameObject fractionEmblem;
  
     bool isMenuOpened = false; 
     public static bool isShelfOpened = false;
@@ -79,10 +71,7 @@ public class MainMenu : MonoBehaviour
 
         isShelfOpened = !isShelfOpened;
     }
-    public void ChangeShelfButtonState(bool isActive)
-    {
-        shelfButton.gameObject.SetActive(isActive);
-    }
+    public void ChangeShelfButtonState(bool isActive) => shelfButton.gameObject.SetActive(isActive);
 
     public void CloseGame() => Application.Quit();
 

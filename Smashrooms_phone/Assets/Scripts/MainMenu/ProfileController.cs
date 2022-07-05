@@ -5,9 +5,9 @@ using TMPro;
 
 public class ProfileController : MonoBehaviour
 {
+    //TODO: REFACTOR ????
     public static ProfileController instance;
-    [SerializeField] TextMeshProUGUI trophiesText;
-    [SerializeField] TextMeshProUGUI mushroomTokensText;
+    [SerializeField] TextMeshProUGUI trophiesText, mushroomTokensText;
 
     [SerializeField] TextMeshProUGUI lvlText;
     [SerializeField] Slider xpSlider;
