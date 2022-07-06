@@ -5,7 +5,7 @@ using TMPro;
 
 public class ProfileController : MonoBehaviour
 {
-    //TODO: REFACTOR ????
+    //TODO: REFACTOR + LOAD with Event????
     public static ProfileController instance;
     [SerializeField] TextMeshProUGUI trophiesText, mushroomTokensText;
 

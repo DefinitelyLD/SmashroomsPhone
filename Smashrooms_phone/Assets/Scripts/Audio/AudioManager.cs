@@ -17,6 +17,8 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             instance = this;
         }
+
+        AudioManager.instance.ChangeMainTheme(MusicThemes.mainMenuTheme);
     }
 
     public void ChangeMainTheme(MusicThemes theme)

@@ -129,6 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9155083159566137911}
+  - component: {fileID: 6679766169905413219}
   - component: {fileID: 9155083159566137909}
   - component: {fileID: 9155083159566137910}
   m_Layer: 5
@@ -161,6 +162,21 @@ RectTransform:
   m_AnchoredPosition: {x: -783.4633, y: -2.8743}
   m_SizeDelta: {x: 353.0817, y: 1085.7527}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6679766169905413219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9155083159566137912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3be73d8dc906b41be92586f769f4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundOnIcon: {fileID: 21300000, guid: 3e4237358f40b6245b71c868f268443b, type: 3}
+  soundOffIcon: {fileID: 21300000, guid: a3f629bdb18924046aefa06a64a3dba3, type: 3}
+  soundButton: {fileID: 9155083159743456036}
 --- !u!222 &9155083159566137909
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -265,7 +281,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f6b6d6a0be5022f4b8eb0233f3fd51ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e4237358f40b6245b71c868f268443b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

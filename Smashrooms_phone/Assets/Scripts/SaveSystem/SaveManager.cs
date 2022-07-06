@@ -1,8 +1,10 @@
 using UnityEngine;
+using System;
 
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager instance;
+    public static event Action<SaveData> OnGameLoaded;
     private SaveData saveData;
 
     private void Awake() 
@@ -40,7 +42,6 @@ public class SaveManager : MonoBehaviour
 
             AudioManager.instance.soundOn = saveData.soundOn;
             AudioManager.instance.MuteSound(saveData.soundOn);
-            MainMenu.instance.ChangeSoundButtonIcon();
 
             Shelf.instance.SelectFighter(saveData.selectedMushroom);
             Shelf.instance.ChangeCheckMark((int)saveData.selectedMushroom + 1);
@@ -56,5 +57,6 @@ public class SaveManager : MonoBehaviour
             Shelf.instance.SelectFighter(MushroomType.basicMushroom);
             AudioManager.instance.soundOn = true;
         }
+        OnGameLoaded?.Invoke(saveData);
     }
 }

@@ -5,6 +5,7 @@ public class Storage : MonoBehaviour
 {
     public static Storage instance;
     private static readonly Dictionary<MushroomType, MushroomData> mushrooms = new Dictionary<MushroomType, MushroomData>();
+    private static readonly Dictionary<ItemType, ItemData> items = new Dictionary<ItemType, ItemData>();
 
     [SerializeField] AudioClip mainMenuTheme;
     [SerializeField] AudioClip fightTheme;
@@ -20,14 +21,15 @@ public class Storage : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             instance = this;
         }
+        InitializeStorage();
     }
-    private void Start() => InitializeStorage();
 
     private void InitializeStorage()
     {
         DontDestroyOnLoad(gameObject);
 
         MushroomData[] loadedMushrooms = Resources.LoadAll<MushroomData>("Mushrooms");
+        ItemData[] loadedItems = Resources.LoadAll<ItemData>("Items");
 
         int length;
         length = loadedMushrooms.Length;
@@ -36,6 +38,14 @@ public class Storage : MonoBehaviour
         {   
             if(mushrooms.ContainsKey(loadedMushrooms[i].type) == false)
             mushrooms.Add(loadedMushrooms[i].type, loadedMushrooms[i]);
+        }
+
+        length = loadedItems.Length;
+        Debug.Log(length);
+        for(int i = 0; i < length; i++) 
+        {   
+            if(items.ContainsKey(loadedItems[i].type) == false)
+            items.Add(loadedItems[i].type, loadedItems[i]);
         }
     }
 
@@ -52,6 +62,8 @@ public class Storage : MonoBehaviour
     public static int GetMushroomAgility(MushroomType type) => mushrooms[type].agility;
     public static int GetMushroomIntelligence(MushroomType type) => mushrooms[type].intelligence;
     public static int GetMushroomEndurance(MushroomType type) => mushrooms[type].endurance;
+
+    public static Sprite GetItemIcon(ItemType type) => items[type].itemIcon;
 
     public AudioClip GetAudioTheme(MusicThemes theme)
     {
