@@ -6,6 +6,7 @@ public class Storage : MonoBehaviour
     public static Storage instance;
     private static readonly Dictionary<MushroomType, MushroomData> mushrooms = new Dictionary<MushroomType, MushroomData>();
     private static readonly Dictionary<ItemType, ItemData> items = new Dictionary<ItemType, ItemData>();
+    private static readonly Dictionary<int, RankUpPressets> rankUpPresets = new Dictionary<int, RankUpPressets>();
 
     [SerializeField] AudioClip mainMenuTheme;
     [SerializeField] AudioClip fightTheme;
@@ -30,6 +31,7 @@ public class Storage : MonoBehaviour
 
         MushroomData[] loadedMushrooms = Resources.LoadAll<MushroomData>("Mushrooms");
         ItemData[] loadedItems = Resources.LoadAll<ItemData>("Items");
+        RankUpPressets[] loadedPresets = Resources.LoadAll<RankUpPressets>("RankUpPresets");
 
         int length;
         length = loadedMushrooms.Length;
@@ -41,12 +43,19 @@ public class Storage : MonoBehaviour
         }
 
         length = loadedItems.Length;
-        Debug.Log(length);
         for(int i = 0; i < length; i++) 
         {   
             if(items.ContainsKey(loadedItems[i].type) == false)
             items.Add(loadedItems[i].type, loadedItems[i]);
         }
+
+        length = loadedPresets.Length;
+        for(int i = 0; i < length; i++) 
+        {   
+            if(rankUpPresets.ContainsKey(loadedPresets[i].rankId) == false)
+            rankUpPresets.Add(loadedPresets[i].rankId, loadedPresets[i]);
+        }
+        Debug.Log(rankUpPresets.Count);
     }
 
     #region Getters
@@ -64,6 +73,9 @@ public class Storage : MonoBehaviour
     public static int GetMushroomEndurance(MushroomType type) => mushrooms[type].endurance;
 
     public static Sprite GetItemIcon(ItemType type) => items[type].itemIcon;
+    public static string GetItemName(ItemType type) => items[type].itemName;
+
+    public static List<ItemWithAmount> GetRankUpItems(int id) => rankUpPresets[id].itemsToRankUp;
 
     public AudioClip GetAudioTheme(MusicThemes theme)
     {

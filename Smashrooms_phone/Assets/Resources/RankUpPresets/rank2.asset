@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a1008304e76a8742a907e54b54a9cd0, type: 3}
-  m_Name: Crystal
+  m_Script: {fileID: 11500000, guid: 385a748a0ecdf884ca30ba593e6e6066, type: 3}
+  m_Name: rank2
   m_EditorClassIdentifier: 
-  type: 2
-  itemName: Crystal
-  itemIcon: {fileID: 21300000, guid: 98af7fb04cfcb02458f380aa941358cf, type: 3}
+  rankId: 2
+  itemsToRankUp:
+  - item: 1
+    amount: 2
+  - item: 2
+    amount: 2
