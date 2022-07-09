@@ -55,7 +55,6 @@ public class Storage : MonoBehaviour
             if(rankUpPresets.ContainsKey(loadedPresets[i].rankId) == false)
             rankUpPresets.Add(loadedPresets[i].rankId, loadedPresets[i]);
         }
-        Debug.Log(rankUpPresets.Count);
     }
 
     #region Getters
@@ -67,10 +66,10 @@ public class Storage : MonoBehaviour
 
     public static Sprite GetMushroomSprite(MushroomType type) => mushrooms[type].mushroomSprite;
     public static Sprite GetIslandSprite(MushroomType type) => mushrooms[type].islandSprite;
-    public static int GetMushroomStrength(MushroomType type) => mushrooms[type].strength;
-    public static int GetMushroomAgility(MushroomType type) => mushrooms[type].agility;
-    public static int GetMushroomIntelligence(MushroomType type) => mushrooms[type].intelligence;
-    public static int GetMushroomEndurance(MushroomType type) => mushrooms[type].endurance;
+    public static float GetMushroomStrength(MushroomType type) => mushrooms[type].strength;
+    public static float GetMushroomAgility(MushroomType type) => mushrooms[type].agility;
+    public static float GetMushroomIntelligence(MushroomType type) => mushrooms[type].intelligence;
+    public static float GetMushroomEndurance(MushroomType type) => mushrooms[type].endurance;
 
     public static Sprite GetItemIcon(ItemType type) => items[type].itemIcon;
     public static string GetItemName(ItemType type) => items[type].itemName;

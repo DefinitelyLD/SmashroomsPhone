@@ -11,23 +11,16 @@ public class RankUp : MonoBehaviour
     [SerializeField] List<TextMeshProUGUI> itemTexts;
 
     private const int MAX_RANK = 3;
-    private int currentRank = 1;
     private List<ItemWithAmount> itemsToRankUp;
 
-    private void Awake()
-    {
-        rankUpButton.onClick.AddListener(() => TryRankUp());
-    }
+    private void Awake() => rankUpButton.onClick.AddListener(() => TryRankUp());
 
-    private void Start() {
-        UpdateUI();
-    }
+    private void Start() => UpdateUI();
 
     public void UpdateUI()
     {
         DisableItems();
-        Debug.Log(currentRank);
-        itemsToRankUp = Storage.GetRankUpItems(currentRank);
+        itemsToRankUp = Storage.GetRankUpItems(PlayerData.instance.GetMushroomRank());
         for(int i = 0; i < itemsToRankUp.Count; i++)
         {
             itemParents[i].gameObject.SetActive(true);
@@ -63,9 +56,10 @@ public class RankUp : MonoBehaviour
 
     private void TryRankUp()
     {
+        if(PlayerData.instance.CanRankUpMushroom() == false) return;
         if(InventoryManager.instance.TryBuyItem(itemsToRankUp) == false) return;
 
-        if(currentRank < MAX_RANK) currentRank++;
+        PlayerData.instance.RankUPMushroom();
         UpdateUI();
     }
 }

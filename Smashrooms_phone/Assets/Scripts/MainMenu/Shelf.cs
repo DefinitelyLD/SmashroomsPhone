@@ -1,15 +1,10 @@
 using UnityEngine.UI;
 using UnityEngine;
-using TMPro;
 
 public class Shelf : MonoBehaviour
 {
     public static Shelf instance;
     [SerializeField] Button fighter1, fighter2;
-
-    [SerializeField] TextMeshProUGUI strengthText, agilityText, intelligenceText, enduranceText;
-
-    [SerializeField] Slider strengthSlider, agilitySlider, intelligenceSlider, enduranceSlider;
 
     [SerializeField] Image mushroomImage, islandImage;
 
@@ -24,26 +19,14 @@ public class Shelf : MonoBehaviour
 
     public void SelectFighter(MushroomType type)
     {
-        int strength = Storage.GetMushroomStrength(type);
-        strengthText.text = strength.ToString();
-        int agility = Storage.GetMushroomAgility(type);
-        agilityText.text = agility.ToString();
-        int intelligence = Storage.GetMushroomIntelligence(type);
-        intelligenceText.text = intelligence.ToString();
-        int endurance = Storage.GetMushroomEndurance(type);
-        enduranceText.text = endurance.ToString();
-
-        strengthSlider.value = strength;
-        agilitySlider.value = agility;
-        intelligenceSlider.value = intelligence;
-        enduranceSlider.value = endurance;
-
         mushroomImage.sprite = Storage.GetMushroomSprite(type);
         islandImage.sprite = Storage.GetIslandSprite(type);
 
         mushroomType = type;
 
         mushroomImage.GetComponent<Animator>().enabled = type == MushroomType.basicMushroom? true : false;
+
+        PlayerData.instance.SelectMushroom((int) mushroomType);
     }
 
     public void ChangeCheckMark(int buttonID)

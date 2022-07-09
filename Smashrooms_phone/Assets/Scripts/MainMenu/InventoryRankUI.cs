@@ -5,7 +5,8 @@ public class InventoryRankUI : MonoBehaviour
 {
     [SerializeField] Button inventoryButton, rankUpButton;
     [SerializeField] GameObject inventoryMenu, rankUpMenu;
-    [SerializeField] Sprite buttonActive, buttonDisabled; 
+    [SerializeField] Sprite buttonActive, buttonDisabled;
+    [SerializeField] FutureStatsUI futureStats;
 
     private void Awake()
     {
@@ -21,6 +22,8 @@ public class InventoryRankUI : MonoBehaviour
 
         inventoryMenu.SetActive(state == InventoryRankUIState.openInventory);
         rankUpMenu.SetActive(state == InventoryRankUIState.openRankUp);
+
+        futureStats.SetFutureStatsActive(state == InventoryRankUIState.openRankUp);
     }
 
     private enum InventoryRankUIState

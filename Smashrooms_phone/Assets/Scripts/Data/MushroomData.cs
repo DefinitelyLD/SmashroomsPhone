@@ -9,16 +9,16 @@ public class MushroomData : ScriptableObject
     public Sprite islandSprite;
 
     [Range(1,9)]
-    public int strength;
+    public float strength;
 
     [Range(1,9)]
-    public int agility;
+    public float agility;
 
     [Range(1,9)]
-    public int intelligence;
+    public float intelligence;
 
     [Range(1,9)]
-    public int endurance;
+    public float endurance;
 }
 
 public enum MushroomType
