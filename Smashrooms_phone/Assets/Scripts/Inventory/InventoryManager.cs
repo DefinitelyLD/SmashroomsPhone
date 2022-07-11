@@ -17,6 +17,14 @@ public class InventoryManager : MonoBehaviour
         AddItem(ItemType.goldClover, 4);
         UpdateUI();
     }
+    public void LoadInventory(InventorySave save)
+    {
+        for(int i = 0; i < save.items.Count; i++)
+        {
+            Debug.Log("ADD FROM LOAD");
+            AddItem(save.items[i], save.quantities[i]);
+        }
+    }
 
     private void UpdateUI()
     {
@@ -58,5 +66,18 @@ public class InventoryManager : MonoBehaviour
 
         foreach (ItemWithAmount item in cost) RemoveItem(item.item, item.amount);
         return true;
+    }
+
+    public InventorySave GetInventorySave()
+    {
+        InventorySave save = new InventorySave();
+        for(int i = 0; i < items.Count; i++)
+        {
+            save.items.Add(items[i]);
+            save.quantities.Add(slots[items.IndexOf(items[i])].Quantity);
+        }
+
+        Debug.Log(save.items.Count);
+        return save;
     }
 }

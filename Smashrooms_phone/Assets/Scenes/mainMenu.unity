@@ -4712,7 +4712,6 @@ MonoBehaviour:
   mushroomTokensText: {fileID: 1245124884}
   lvlText: {fileID: 316947881}
   xpSlider: {fileID: 1812827033}
-  levelXp: 3200000064000000fa000000f4010000ee020000e8030000dc050000c40900008813000010270000
 --- !u!114 &1794367048 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 316372197039731367, guid: a80ed44f7510e62438abe80e95be120a, type: 3}
@@ -6704,7 +6703,7 @@ PrefabInstance:
     - target: {fileID: 9155083159743456036, guid: 9156c1b0c04f0e7428bb9c8fe853472a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 699560457}
+      objectReference: {fileID: 1252245803}
     - target: {fileID: 9155083159743456036, guid: 9156c1b0c04f0e7428bb9c8fe853472a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -6739,7 +6738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9155083159743456036, guid: 9156c1b0c04f0e7428bb9c8fe853472a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: MainMenu, Assembly-CSharp
+      value: MenuAdd, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9155083159743456036, guid: 9156c1b0c04f0e7428bb9c8fe853472a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
