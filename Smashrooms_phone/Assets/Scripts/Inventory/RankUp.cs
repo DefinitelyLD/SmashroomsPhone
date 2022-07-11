@@ -15,8 +15,6 @@ public class RankUp : MonoBehaviour
 
     private void Awake() => rankUpButton.onClick.AddListener(() => TryRankUp());
 
-    private void Start() => UpdateUI();
-
     public void UpdateUI()
     {
         DisableItems();

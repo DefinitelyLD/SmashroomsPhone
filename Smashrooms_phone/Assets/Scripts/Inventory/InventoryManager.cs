@@ -13,7 +13,7 @@ public class InventoryManager : MonoBehaviour
     private void Start() 
     {
         AddItem(ItemType.gloomDust, 4);
-        AddItem(ItemType.crystal, 4);
+        AddItem(ItemType.crystal_lvl_1, 4);
         AddItem(ItemType.goldClover, 4);
         UpdateUI();
     }

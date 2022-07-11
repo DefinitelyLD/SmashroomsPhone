@@ -40,7 +40,6 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    [HideInInspector] public List<int> levelXp = new List<int> {50, 100, 250, 500, 750, 1000, 1500, 2500, 5000, 10000}; //TODO: UTILITY 
     private int currentLvl = 1;
     private int currentXP;
 
@@ -50,9 +49,9 @@ public class PlayerData : MonoBehaviour
         set 
         {
             currentXP = value;
-            if(currentXP >= levelXp[currentLvl - 1] && currentLvl < 10)
+            if(currentXP >= Utility.levelXp[currentLvl - 1] && currentLvl < 10)
             {
-                currentXP = currentXP - levelXp[currentLvl - 1];
+                currentXP = currentXP - Utility.levelXp[currentLvl - 1];
                 CurrentLvl += 1;
             }
             xpSlider.value = currentLvl == 10 ? xpSlider.maxValue : currentXP;
@@ -66,15 +65,15 @@ public class PlayerData : MonoBehaviour
         {
             currentLvl = value;
             lvlText.text = "lv." + currentLvl.ToString();
-            xpSlider.maxValue = levelXp[currentLvl - 1];
+            xpSlider.maxValue = Utility.levelXp[currentLvl - 1];
         }
     }
 
-    private void Awake() => instance = this;
-    private void Start()
+    private void Awake()
     {
-        availableMushrooms.Add(new Mushroom(MushroomType.basicMushroom, levelXp));
-        availableMushrooms.Add(new Mushroom(MushroomType.fireMushroom, levelXp));
+        instance = this;
+        availableMushrooms.Add(new Mushroom(MushroomType.basicMushroom));
+        availableMushrooms.Add(new Mushroom(MushroomType.fireMushroom));
     }
 
     private void Update() 

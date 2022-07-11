@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rankId: 2
   itemsToRankUp:
-  - item: 1
-    amount: 2
-  - item: 2
+  - item: 11
+    amount: 1
+  - item: 5
     amount: 2

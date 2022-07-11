@@ -11,7 +11,18 @@ public enum ItemType
 {
     NONE = 0,
 
-    gloomDust = 1,
-    crystal = 2,
-    goldClover = 3,
+    intelligencePotion = 1,
+    strengthPotion = 2,
+    agilityPotion = 3,
+    endurancePotion = 4,
+    crystal_lvl_1 = 5,
+    crystal_lvl_2 = 6,
+    crystal_lvl_3 = 7,
+    crystal_lvl_4 = 8,
+    crystal_lvl_5 = 9,
+    goldClover = 10,
+    gloomDust = 11,
+    fireEssence = 12,
+    airEssence = 13,
+    relic = 14,
 }

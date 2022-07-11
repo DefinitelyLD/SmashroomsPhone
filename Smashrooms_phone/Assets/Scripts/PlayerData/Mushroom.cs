@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System;
 
 public class Mushroom
@@ -10,22 +9,19 @@ public class Mushroom
     public const int MAX_LEVEL = 20;
     public const float STATS_ON_RANK_UP = 0.5f;
 
-    public int rank;
+    public int rank = 1;
     public int level;
     public int currentXP;
 
-    private List<int> levelXp = new List<int>();
 
     public float strength, agility, intelligence, endurance;
 
     private MushroomType mushroomType;
 
-    public Mushroom(MushroomType mushroom, List<int> _levelXp)
+    public Mushroom(MushroomType mushroom)
     {
         rank = 1;
         level = 1;
-
-        levelXp = _levelXp;
 
         strength = Storage.GetMushroomStrength(mushroom);
         agility = Storage.GetMushroomAgility(mushroom);
@@ -38,11 +34,11 @@ public class Mushroom
         currentXP += amount;
 
         if(level == rank * LEVELS_TO_RANK_UP) 
-        currentXP = currentXP > levelXp[level - 1] ? levelXp[level - 1] : currentXP;
+        currentXP = currentXP > Utility.levelXp[level - 1] ? Utility.levelXp[level - 1] : currentXP;
 
-        if(currentXP >= levelXp[level - 1] && level < rank * LEVELS_TO_RANK_UP &&  level < MAX_LEVEL)
+        if(currentXP >= Utility.levelXp[level - 1] && level < rank * LEVELS_TO_RANK_UP &&  level < MAX_LEVEL)
         {
-            currentXP = currentXP - levelXp[level - 1];
+            currentXP = currentXP - Utility.levelXp[level - 1];
             level += 1;
         }
     }
@@ -60,5 +56,5 @@ public class Mushroom
         OnStatsChaged.Invoke((int) mushroomType);
     }
 
-    public bool CanRankUp() => level == rank * LEVELS_TO_RANK_UP && currentXP >= levelXp[level - 1];
+    public bool CanRankUp() => level == rank * LEVELS_TO_RANK_UP && currentXP >= Utility.levelXp[level - 1];
 }
