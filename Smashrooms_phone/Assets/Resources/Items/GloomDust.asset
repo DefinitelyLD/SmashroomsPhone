@@ -15,3 +15,5 @@ MonoBehaviour:
   type: 11
   itemName: Gloom Dust
   itemIcon: {fileID: 21300000, guid: 566cfcdbff6c647499bdf36e6af9932c, type: 3}
+  shopIcon: {fileID: 21300000, guid: 2ef31930d7a82884bb3e46e5be19d6e6, type: 3}
+  price: 500

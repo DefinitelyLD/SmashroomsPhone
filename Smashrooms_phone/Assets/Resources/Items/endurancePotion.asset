@@ -15,3 +15,5 @@ MonoBehaviour:
   type: 4
   itemName: Endurance Potion
   itemIcon: {fileID: 21300000, guid: 3af20edd873283547881dd991ea02d53, type: 3}
+  shopIcon: {fileID: 21300000, guid: 82139e593d3a606458797ba047c2979d, type: 3}
+  price: 250

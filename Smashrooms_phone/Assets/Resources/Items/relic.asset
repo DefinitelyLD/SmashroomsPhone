@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: relic
   m_EditorClassIdentifier: 
   type: 14
-  itemName: Relic
+  itemName: Relic of the past
   itemIcon: {fileID: 21300000, guid: 785ecef1f4c405a498733b059de598f8, type: 3}
+  shopIcon: {fileID: 21300000, guid: 74ae05c0c4729814ba1d333a444f0d70, type: 3}
+  price: 1500

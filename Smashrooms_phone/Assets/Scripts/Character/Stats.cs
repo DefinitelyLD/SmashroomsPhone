@@ -87,8 +87,8 @@ public class Stats : MonoBehaviour
     private void GameOver()
     {
         anim.Play("death");
-        int awardsAmount = isEnemy ? 40 : 10;
-        GameOverUI.instance.ShowGGScreen(isEnemy, awardsAmount, awardsAmount, awardsAmount);
+        int awardsAmount = isEnemy ? Random.Range(90, 130 + 1) : Random.Range(25, 30 + 1); //TODO: CONSTANTS ??? 
+        GameOverUI.instance.ShowGGScreen(isEnemy, awardsAmount, awardsAmount, awardsAmount); 
     }
     private void StopAnimator() => anim.enabled = false;
 }

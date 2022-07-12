@@ -15,3 +15,5 @@ MonoBehaviour:
   type: 2
   itemName: Strength Potion
   itemIcon: {fileID: 21300000, guid: 9f69031e8c9549845b1155625357c9b2, type: 3}
+  shopIcon: {fileID: 21300000, guid: f0fd8a7f035b70044b4544062664fdcb, type: 3}
+  price: 250

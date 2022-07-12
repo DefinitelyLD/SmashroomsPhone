@@ -72,7 +72,9 @@ public class Storage : MonoBehaviour
     public static float GetMushroomEndurance(MushroomType type) => mushrooms[type].endurance;
 
     public static Sprite GetItemIcon(ItemType type) => items[type].itemIcon;
+    public static Sprite GetItemShopIcon(ItemType type) => items[type].shopIcon;
     public static string GetItemName(ItemType type) => items[type].itemName;
+    public static int GetItemPrice(ItemType type) => items[type].price;
 
     public static List<ItemWithAmount> GetRankUpItems(int id) => rankUpPresets[id].itemsToRankUp;
 

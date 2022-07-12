@@ -16,7 +16,7 @@ public class ItemSlot : MonoBehaviour
         set
         {
             quantity = value;
-            itemAmountText.text = quantity < 10 ? quantity.ToString() : "+9";
+            itemAmountText.text = quantity < 10 ? quantity.ToString() : "9+";
         }
     }
 

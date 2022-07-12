@@ -15,3 +15,5 @@ MonoBehaviour:
   type: 3
   itemName: Agility Potion
   itemIcon: {fileID: 21300000, guid: f972d75d81c2e6c49b364fd43b2f14d8, type: 3}
+  shopIcon: {fileID: 21300000, guid: e121040611ed25b4d8052d697a5be6fd, type: 3}
+  price: 250

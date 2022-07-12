@@ -15,3 +15,5 @@ MonoBehaviour:
   type: 7
   itemName: Crystal lvl 3
   itemIcon: {fileID: 21300000, guid: 48daf540be133c844b18b8d354afe04b, type: 3}
+  shopIcon: {fileID: 21300000, guid: 7133f15257f16584abb49a856eef33a0, type: 3}
+  price: 250

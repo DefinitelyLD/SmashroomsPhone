@@ -15,3 +15,5 @@ MonoBehaviour:
   type: 9
   itemName: Crystal lvl 5
   itemIcon: {fileID: 21300000, guid: 28573f6f5e6a9bf4595bdba7d4b0baad, type: 3}
+  shopIcon: {fileID: 21300000, guid: 03635a62150c8914ab7ada0b2cf64d7e, type: 3}
+  price: 1000

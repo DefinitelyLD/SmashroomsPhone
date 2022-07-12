@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: fireEssence
   m_EditorClassIdentifier: 
   type: 12
-  itemName: Fire Essence
+  itemName: Primal fire
   itemIcon: {fileID: 21300000, guid: 5f68a60e2de75ee41882fcb52fa25201, type: 3}
+  shopIcon: {fileID: 21300000, guid: 648372f2d2499ee46bd3601629722bec, type: 3}
+  price: 750

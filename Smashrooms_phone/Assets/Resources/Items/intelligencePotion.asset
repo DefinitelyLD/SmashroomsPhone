@@ -15,3 +15,5 @@ MonoBehaviour:
   type: 1
   itemName: Intelligence Potion
   itemIcon: {fileID: 21300000, guid: e69b0a8084ba7dd4d9dc4feae0e06683, type: 3}
+  shopIcon: {fileID: 21300000, guid: fa889e638af95bd488148676f6d4cc62, type: 3}
+  price: 250

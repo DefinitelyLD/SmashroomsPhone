@@ -15,3 +15,5 @@ MonoBehaviour:
   type: 10
   itemName: Gold Clover
   itemIcon: {fileID: 21300000, guid: fd866cdbaaa23bd4abe778bf3000547c, type: 3}
+  shopIcon: {fileID: 21300000, guid: db87ba6da435d8546bab0db4d3a55d9c, type: 3}
+  price: 300

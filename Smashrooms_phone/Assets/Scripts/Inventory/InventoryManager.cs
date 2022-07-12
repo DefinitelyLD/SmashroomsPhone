@@ -20,10 +20,7 @@ public class InventoryManager : MonoBehaviour
     public void LoadInventory(InventorySave save)
     {
         for(int i = 0; i < save.items.Count; i++)
-        {
-            Debug.Log("ADD FROM LOAD");
-            AddItem(save.items[i], save.quantities[i]);
-        }
+        AddItem(save.items[i], save.quantities[i]);
     }
 
     private void UpdateUI()
@@ -76,8 +73,7 @@ public class InventoryManager : MonoBehaviour
             save.items.Add(items[i]);
             save.quantities.Add(slots[items.IndexOf(items[i])].Quantity);
         }
-
-        Debug.Log(save.items.Count);
+        
         return save;
     }
 }
