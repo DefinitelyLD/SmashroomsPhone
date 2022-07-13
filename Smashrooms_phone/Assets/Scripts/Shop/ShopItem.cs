@@ -11,6 +11,8 @@ public class ShopItem : MonoBehaviour
     private const int MAX_ITEMS = 10;
     private const int MIN_ITEMS = 1;
 
+    private ItemType itemType;
+
     private int price;
     private int amount;
     private int Amount
@@ -27,18 +29,28 @@ public class ShopItem : MonoBehaviour
 
     private void Awake()
     {
-        buyButton.onClick.AddListener(() => {AudioManager.instance.PlaySoundOnButtonClicked();});
+        buyButton.onClick.AddListener(() => {AudioManager.instance.PlaySoundOnButtonClicked(); TryBuyItem();});
         addButton.onClick.AddListener(() => {AudioManager.instance.PlaySoundOnButtonClicked(); AddAmount();});
         removeButton.onClick.AddListener(() => {AudioManager.instance.PlaySoundOnButtonClicked(); RemoveAmount();});
     }
 
-    public void InitializeShopItem(ItemType item)
+    public void InitializeShopItem(ItemType _itemType)
     {
-        itemImage.sprite = Storage.GetItemShopIcon(item);
-        price = Storage.GetItemPrice(item);
+        itemImage.sprite = Storage.GetItemShopIcon(_itemType);
+        price = Storage.GetItemPrice(_itemType);
         Amount = 1;
+        itemType = _itemType;
     }
 
     private void AddAmount() => Amount++;
     private void RemoveAmount() => Amount--;
+
+    private void TryBuyItem()
+    {
+        if(PlayerData.instance.MushroomTokens >= price * amount)
+        {
+            PlayerData.instance.MushroomTokens -= price * amount;
+            InventoryManager.instance.AddItem(itemType, amount);
+        }
+    }
 }

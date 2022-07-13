@@ -36,7 +36,7 @@ public class PlayerData : MonoBehaviour
         set 
         {
             mushroomTokens = value;
-            mushroomTokensText.text = mushroomTokens <= 999 ? mushroomTokens.ToString() : "+999"; 
+            mushroomTokensText.text = mushroomTokens <= 9999 ? mushroomTokens.ToString() : "+9999"; 
         }
     }
 
@@ -78,8 +78,7 @@ public class PlayerData : MonoBehaviour
 
     private void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1)) CurrentXP += 50;
-        if(Input.GetKeyDown(KeyCode.Alpha2)) AddMushroomXp(0, 50);
+        if(Input.GetKeyDown(KeyCode.Alpha1)) MushroomTokens += 100;
     }
 
     public void LoadPlayerData()

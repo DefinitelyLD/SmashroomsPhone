@@ -13,6 +13,7 @@ public class ShopUI : MonoBehaviour
     private const float CARD_SIZE = 375;
     private const int CARD_PER_PAGE = 3;
     private SelectedTab selectedTab;
+    private float minScrollPos;
 
     private Dictionary<SelectedTab, List<ItemType>> pageItems = new Dictionary<SelectedTab, List<ItemType>>()
     {
@@ -49,18 +50,24 @@ public class ShopUI : MonoBehaviour
         }
         shopItemsParent.anchoredPosition = new Vector2(0, shopItemsParent.anchoredPosition.y);
         selectedTab = tab;
+
+        minScrollPos = -CARD_SIZE * (pageItems[selectedTab].Count - CARD_PER_PAGE);
+        ChangeScrollButtons();
     }
 
     private void ScrollItems(int scrollDirection)
     {
         float x = shopItemsParent.anchoredPosition.x;
         x += CARD_SIZE * scrollDirection;
-        float minScrollPos = -CARD_SIZE * (pageItems[selectedTab].Count - CARD_PER_PAGE);
         x = Mathf.Clamp(x, minScrollPos, 0);
         shopItemsParent.anchoredPosition = new Vector2(x, shopItemsParent.anchoredPosition.y);
 
-        //scrollLeft.image.sprite = shopItemsParent.anchoredPosition.x == minScrollPos ? arrowActive : arrowDisabled;
-        //scrollRight.image.sprite = shopItemsParent.anchoredPosition.x == 0 ? arrowActive : arrowDisabled;
+        ChangeScrollButtons();
+    }
+    private void ChangeScrollButtons()
+    {
+        scrollRight.image.sprite = shopItemsParent.anchoredPosition.x == minScrollPos ? arrowDisabled : arrowActive;
+        scrollLeft.image.sprite = shopItemsParent.anchoredPosition.x == 0 ? arrowDisabled : arrowActive;
     }
 
     public enum SelectedTab

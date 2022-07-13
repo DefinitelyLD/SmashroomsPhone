@@ -50,9 +50,12 @@ public class MainMenu : MonoBehaviour
 
         LeanTween.moveLocalY(menuButtons, menuButtons.transform.localPosition.y - posY, 0.1f);
         LeanTween.moveLocalY(backButtonParent, backButtonParent.transform.localPosition.y + posY, 0.1f);
-
-        LeanTween.moveLocalY(mTokens, mTokens.transform.localPosition.y + posY, 0.1f);
-        LeanTween.moveLocalY(sTokens, sTokens.transform.localPosition.y + posY, 0.1f);
+        
+        if(currentPage != shopPage)
+        {
+            LeanTween.moveLocalY(mTokens, mTokens.transform.localPosition.y + posY, 0.1f);
+            LeanTween.moveLocalY(sTokens, sTokens.transform.localPosition.y + posY, 0.1f);
+        }
         LeanTween.moveLocalY(profileBar, profileBar.transform.localPosition.y + posY, 0.1f);
         LeanTween.moveLocalY(fractionEmblem, fractionEmblem.transform.localPosition.y + pagePosY, 0.1f);
 
