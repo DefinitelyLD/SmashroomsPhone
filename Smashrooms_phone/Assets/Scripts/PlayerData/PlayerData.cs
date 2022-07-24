@@ -18,6 +18,8 @@ public class PlayerData : MonoBehaviour
     [HideInInspector] public List<Mushroom> availableMushrooms = new List<Mushroom>();
     private int selectedMushroomId = 0;
 
+    public bool intelligencePotionUsed, agilityPotionUsed, strengthPotionUsed, endurancePotionUsed;
+
     private int trophies;
     public int Trophies
     {

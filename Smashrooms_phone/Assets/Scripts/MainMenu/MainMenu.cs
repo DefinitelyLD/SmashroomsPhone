@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject profileBar, fractionEmblem;
     [SerializeField] GameObject shelfPage, invetoryRankPage, shopPage;
 
-    [SerializeField] Button play, shelfButton, inventoryButton, backButton, shopButton;
+    [SerializeField] Button shelfButton, inventoryButton, backButton, shopButton;
 
     private GameObject currentPage;
 
@@ -21,7 +20,6 @@ public class MainMenu : MonoBehaviour
 
     private void Awake() 
     {
-        play.onClick.AddListener(() => {LoadFightAsync.AllowSceneTransition(); SaveManager.instance.Save(); });
         shelfButton.onClick.AddListener(() => ChangePageState(shelfPage));
         inventoryButton.onClick.AddListener(() => ChangePageState(invetoryRankPage));
         backButton.onClick.AddListener(() => ClosePage());
