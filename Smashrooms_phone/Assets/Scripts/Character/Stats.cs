@@ -6,9 +6,11 @@ using TMPro;
 public class Stats : MonoBehaviour
 {
     //TODO: CLASS FOR STATS UI + ACTIONS
-    public int maxHealth;
-    private int currentHealth; 
+    public float maxHealth;
+    private float currentHealth; 
     public int damage;
+
+    [SerializeField] BoostsUI boostsUI;
 
     [SerializeField] Slider hpSlider;
     [SerializeField] TextMeshProUGUI hpText; 
@@ -23,7 +25,7 @@ public class Stats : MonoBehaviour
 
     public float damageBlock = 0f;
 
-    public int CurrentHealth
+    public float CurrentHealth
     {
         get => currentHealth;
         set
@@ -40,19 +42,31 @@ public class Stats : MonoBehaviour
     {
         isEnemy = _isEnemy;
 
-        SaveData save = SaveHelper.Deserialize<SaveData>(PlayerPrefs.GetString("save"));
+        PlayerDataSave save = SaveHelper.Deserialize<PlayerDataSave>(PlayerPrefs.GetString("player"));
         MushroomType selectedMushroom =  isEnemy? MushroomType.basicMushroom : save.selectedMushroom;
-        
-        maxHealth =(int)((Storage.BASIC_HEALTH + Storage.HEALTH_PER_STAT * Storage.GetMushroomEndurance(selectedMushroom)) * (1 + save.mushroomLvls[(int) selectedMushroom] / 10f));
+
+        float addingEndurance = save.endurancePotionUsed ? 2 : 0;
+        float enduranceStatAmount = save.mushroomEndurance[(int)selectedMushroom] + addingEndurance;
+
+        maxHealth = Storage.BASIC_HEALTH + Storage.HEALTH_PER_STAT * enduranceStatAmount * 
+                    (1 + save.mushroomLvls[(int) selectedMushroom] / 10f);
+                    
         hpSlider.maxValue = maxHealth;
         CurrentHealth = maxHealth;
         
-        damage = (int)((Storage.BASIC_DAMAGE + Storage.DAMAGE_PER_STAT * Storage.GetMushroomStrength(selectedMushroom)) * (1 + save.mushroomLvls[(int) selectedMushroom] / 10f));
+        float addingStrength = save.strengthPotionUsed ? 2 : 0;
+        float strengthStatAmount = save.mushroomEndurance[(int)selectedMushroom] + addingEndurance;
+
+        damage = (int)((Storage.BASIC_DAMAGE + Storage.DAMAGE_PER_STAT * strengthStatAmount * 
+                    (1 + save.mushroomLvls[(int) selectedMushroom] / 10f)));
 
         rend = GetComponent<Renderer>();
         originalMaterial = rend.material;
 
         anim = GetComponent<Animator>();
+
+        if(!isEnemy)
+            boostsUI.ShowBoosts(save.agilityPotionUsed, save.strengthPotionUsed, save.intelligencePotionUsed, save.endurancePotionUsed);
     }
 
     public void TakeDamage(int damage, int attackIndex)

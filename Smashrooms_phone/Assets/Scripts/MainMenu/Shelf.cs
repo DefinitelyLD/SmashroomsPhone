@@ -14,7 +14,10 @@ public class Shelf : MonoBehaviour
     private void Start()
     {
         fighter1.onClick.AddListener(() => {SelectFighter(MushroomType.basicMushroom); ChangeCheckMark(1); });
-        fighter2.onClick.AddListener(() => {SelectFighter(MushroomType.fireMushroom); ChangeCheckMark(2); }); 
+        fighter2.onClick.AddListener(() => {SelectFighter(MushroomType.fireMushroom); ChangeCheckMark(2); });
+
+        SelectFighter(MushroomType.basicMushroom);
+        ChangeCheckMark(1); 
     }
 
     public void SelectFighter(MushroomType type)

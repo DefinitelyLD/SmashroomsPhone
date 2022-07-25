@@ -12,8 +12,8 @@ public class PotionSelect : MonoBehaviour
 
     private void Awake() 
     {
-        continueButton.onClick.AddListener(() => {LoadFightAsync.AllowSceneTransition(); SaveManager.instance.Save(); 
-        AudioManager.instance.PlaySoundOnButtonClicked(); UsePotions(); });
+        continueButton.onClick.AddListener(() => {UsePotions(); LoadFightAsync.AllowSceneTransition(); SaveManager.instance.Save(); 
+        AudioManager.instance.PlaySoundOnButtonClicked();});
         play.onClick.AddListener(() => ToggleUI());
         exit.onClick.AddListener(() => {AudioManager.instance.PlaySoundOnButtonClicked(); ToggleUI();});
 
@@ -56,7 +56,7 @@ public class PotionSelect : MonoBehaviour
         else if(potion == SelectedPotion.Agility)
         {
             if(InventoryManager.instance.GetItemAmount(ItemType.agilityPotion) == 0) return;
-            bool isSelected = intelligence.image.sprite == normal;
+            bool isSelected = agility.image.sprite == normal;
             agility.image.sprite = isSelected? selected : normal;
             PlayerData.instance.agilityPotionUsed = isSelected;
         }
@@ -88,7 +88,10 @@ public class PotionSelect : MonoBehaviour
         InventoryManager.instance.RemoveItem(ItemType.agilityPotion, 1);
 
         if(PlayerData.instance.endurancePotionUsed)
-        InventoryManager.instance.RemoveItem(ItemType.agilityPotion, 1);
+        {
+            Debug.Log("removing");
+            InventoryManager.instance.RemoveItem(ItemType.endurancePotion, 1);
+        }
     }
 
     public enum SelectedPotion

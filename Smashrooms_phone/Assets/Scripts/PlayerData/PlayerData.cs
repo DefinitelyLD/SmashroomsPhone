@@ -83,9 +83,21 @@ public class PlayerData : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha1)) MushroomTokens += 100;
     }
 
-    public void LoadPlayerData()
+    public void LoadPlayerData(PlayerDataSave save)
     {
+        int id = (int)save.selectedMushroom;
+        SelectMushroom(id);
 
+        intelligencePotionUsed = false;
+        agilityPotionUsed = false;
+        strengthPotionUsed = false;
+        endurancePotionUsed = false;
+
+        CurrentLvl = save.currentLvl;
+        CurrentXP = save.currentXP;
+        Trophies = save.trophies;
+        MushroomTokens = save.tokens;
+        AddMushroomXp(id, save.mushroomCurrentXps[id] - availableMushrooms[id].currentXP);
     }
 
     public void SelectMushroom(int id)
@@ -96,11 +108,42 @@ public class PlayerData : MonoBehaviour
 
     public void AddMushroomXp(int selectedMushroom, int amount)
     {
-        int id = selectedMushroom;
-        availableMushrooms[id].AddXp(amount);
+        availableMushrooms[selectedMushroom].AddXp(amount);
         OnMushroomXpChaged?.Invoke(selectedMushroom);
     }
+
     public bool CanRankUpMushroom() => availableMushrooms[selectedMushroomId].CanRankUp();
     public void RankUPMushroom() => availableMushrooms[selectedMushroomId].RankUP();
     public int GetMushroomRank() => availableMushrooms[selectedMushroomId].rank;
+
+    public PlayerDataSave GetPlayerDataSave()
+    {
+        PlayerDataSave save = new PlayerDataSave();
+
+        save.selectedMushroom = (MushroomType) selectedMushroomId;
+
+        save.intelligencePotionUsed = intelligencePotionUsed;
+        save.agilityPotionUsed = agilityPotionUsed;
+        save.strengthPotionUsed = strengthPotionUsed;
+        save.endurancePotionUsed = endurancePotionUsed;
+
+        save.currentXP = CurrentXP;
+        save.currentLvl = currentLvl;
+        save.trophies = Trophies;
+        save.tokens = MushroomTokens;
+
+        foreach(Mushroom mushroom in availableMushrooms)
+        {
+            save.mushroomRanks.Add(mushroom.rank);
+            save.mushroomLvls.Add(mushroom.level);
+            save.mushroomCurrentXps.Add(mushroom.currentXP);
+
+            save.mushroomStrength.Add(mushroom.strength);
+            save.mushroomAgility.Add(mushroom.agility);
+            save.mushroomIntelligence.Add(mushroom.intelligence);
+            save.mushroomEndurance.Add(mushroom.endurance);
+        }
+
+        return save;
+    }
 }

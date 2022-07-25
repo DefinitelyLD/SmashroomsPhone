@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     private void Awake() => instance = this;
     private void Start() 
     {
-        SelectCharacter(SaveHelper.Deserialize<SaveData>(PlayerPrefs.GetString("save")).selectedMushroom);
+        SelectCharacter(SaveHelper.Deserialize<PlayerDataSave>(PlayerPrefs.GetString("player")).selectedMushroom);
         AudioManager.instance.StopMusic();
 
         int id = LeanTween.alpha(loadingScreen, 0f, 0.5f).setDelay(2f).id;

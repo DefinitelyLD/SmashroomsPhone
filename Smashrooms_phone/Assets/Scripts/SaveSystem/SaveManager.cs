@@ -4,8 +4,8 @@ using System;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager instance;
-    public static event Action<SaveData> OnGameLoaded;
-    private SaveData saveData;
+    private PlayerDataSave playerDataSave;
+    private SettingSave settingSave;
     private InventorySave inventorySave;
 
     private void Awake() 
@@ -25,31 +25,31 @@ public class SaveManager : MonoBehaviour
 
     public void Save()
     { 
-        saveData = new SaveData();
-        saveData.soundOn = AudioManager.instance.soundOn;
-        PlayerPrefs.SetString("save", SaveHelper.Serialize(saveData));
+        playerDataSave = PlayerData.instance.GetPlayerDataSave();
+        PlayerPrefs.SetString("player", SaveHelper.Serialize(playerDataSave));
+
+        settingSave = new SettingSave();
+        settingSave.soundOn = AudioManager.instance.soundOn;
+        PlayerPrefs.SetString("settings", SaveHelper.Serialize(settingSave));
 
         inventorySave = InventoryManager.instance.GetInventorySave();
         PlayerPrefs.SetString("inventorySave", SaveHelper.Serialize(inventorySave));
     }
-    public void RewriteSave(SaveData save) => PlayerPrefs.SetString("save", SaveHelper.Serialize(saveData));
 
     public void Load()
     {
-        if(PlayerPrefs.HasKey("save"))
+        if(PlayerPrefs.HasKey("player"))
         {
-            saveData = SaveHelper.Deserialize<SaveData>(PlayerPrefs.GetString("save"));
+            playerDataSave = SaveHelper.Deserialize<PlayerDataSave>(PlayerPrefs.GetString("player"));
+            PlayerData.instance.LoadPlayerData(playerDataSave);
 
-            AudioManager.instance.soundOn = saveData.soundOn;
-            AudioManager.instance.MuteSound(saveData.soundOn);
-
-            Shelf.instance.SelectFighter(saveData.selectedMushroom);
-            Shelf.instance.ChangeCheckMark((int)saveData.selectedMushroom + 1);
         }
-        else
+
+        if(PlayerPrefs.HasKey("settings"))
         {
-            Shelf.instance.SelectFighter(MushroomType.basicMushroom);
-            AudioManager.instance.soundOn = true;
+            settingSave = SaveHelper.Deserialize<SettingSave>(PlayerPrefs.GetString("settings"));
+            AudioManager.instance.soundOn = settingSave.soundOn;
+            AudioManager.instance.MuteSound(settingSave.soundOn);
         }
 
         if(PlayerPrefs.HasKey("inventorySave"))
@@ -57,7 +57,5 @@ public class SaveManager : MonoBehaviour
             inventorySave = SaveHelper.Deserialize<InventorySave>(PlayerPrefs.GetString("inventorySave"));
             InventoryManager.instance.LoadInventory(inventorySave);
         }
-
-        OnGameLoaded?.Invoke(saveData);
     }
 }

@@ -47,13 +47,18 @@ public class GameOverUI : MonoBehaviour
         xpText.text = "+" + xp.ToString();
         mTokenText.text = "+" + mToken.ToString();
 
-        SaveData save = SaveHelper.Deserialize<SaveData>(PlayerPrefs.GetString("save"));
-        save.mushroomTrophies += mTrophy;
-        save.currentLvlXp += xp;
-        save.mushroomTokens += mToken;
-        save.mushroomXps[(int)save.selectedMushroom] += xp;
+        PlayerDataSave save = SaveHelper.Deserialize<PlayerDataSave>(PlayerPrefs.GetString("player"));
+        save.trophies += mTrophy;
+        save.currentXP += xp;
+        save.tokens += mToken;
+        save.mushroomCurrentXps[(int)save.selectedMushroom] += xp;
+
+        save.agilityPotionUsed = false;
+        save.endurancePotionUsed = false;
+        save.intelligencePotionUsed = false;
+        save.strengthPotionUsed = false;
             
-        PlayerPrefs.SetString("save", SaveHelper.Serialize(save));
+        PlayerPrefs.SetString("player", SaveHelper.Serialize(save));
 
         MusicThemes theme = win ? MusicThemes.winTheme : MusicThemes.loseTheme; 
         AudioManager.instance.ChangeMainTheme(theme);
