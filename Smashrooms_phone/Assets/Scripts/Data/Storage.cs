@@ -77,6 +77,7 @@ public class Storage : MonoBehaviour
     public static int GetItemPrice(ItemType type) => items[type].price;
 
     public static List<ItemWithAmount> GetRankUpItems(int id) => rankUpPresets[id].itemsToRankUp;
+    public static Sprite GetRankImage(int id) => rankUpPresets[id].RankImage;
 
     public AudioClip GetAudioTheme(MusicThemes theme)
     {

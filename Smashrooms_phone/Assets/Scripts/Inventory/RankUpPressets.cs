@@ -6,6 +6,7 @@ public class RankUpPressets : ScriptableObject
 {
     public int rankId;
     public List<ItemWithAmount> itemsToRankUp = new List<ItemWithAmount>();
+    public Sprite RankImage;
 }
 [System.Serializable]
 public struct ItemWithAmount

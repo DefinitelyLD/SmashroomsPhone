@@ -19,4 +19,7 @@ public class PlayerDataSave
     public List<float> mushroomAgility = new List<float>();
     public List<float> mushroomIntelligence = new List<float>();
     public List<float> mushroomEndurance = new List<float>();
+
+    public List<ItemType> droppedItems = new List<ItemType>();
+    public List<int> droppedItemsAmount = new List<int>();
 }

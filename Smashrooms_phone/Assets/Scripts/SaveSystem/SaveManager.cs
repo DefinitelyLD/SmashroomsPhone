@@ -42,7 +42,6 @@ public class SaveManager : MonoBehaviour
         {
             playerDataSave = SaveHelper.Deserialize<PlayerDataSave>(PlayerPrefs.GetString("player"));
             PlayerData.instance.LoadPlayerData(playerDataSave);
-
         }
 
         if(PlayerPrefs.HasKey("settings"))

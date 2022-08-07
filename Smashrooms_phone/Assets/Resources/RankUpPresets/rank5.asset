@@ -18,3 +18,4 @@ MonoBehaviour:
     amount: 2
   - item: 7
     amount: 1
+  RankImage: {fileID: 21300000, guid: 4a9647be8d3a5e548a7b6737f10f4939, type: 3}

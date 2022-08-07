@@ -98,6 +98,15 @@ public class PlayerData : MonoBehaviour
         Trophies = save.trophies;
         MushroomTokens = save.tokens;
         AddMushroomXp(id, save.mushroomCurrentXps[id] - availableMushrooms[id].currentXP);
+
+        for(int i = 0; i < availableMushrooms.Count; i++)
+            availableMushrooms[i].Rank = save.mushroomRanks[i];
+
+        for(int i = 0; i < save.droppedItems.Count; i++)
+            InventoryManager.instance.AddItem(save.droppedItems[i], save.droppedItemsAmount[i]);
+        
+        save.droppedItems.Clear();
+        save.droppedItemsAmount.Clear();
     }
 
     public void SelectMushroom(int id)
@@ -114,7 +123,7 @@ public class PlayerData : MonoBehaviour
 
     public bool CanRankUpMushroom() => availableMushrooms[selectedMushroomId].CanRankUp();
     public void RankUPMushroom() => availableMushrooms[selectedMushroomId].RankUP();
-    public int GetMushroomRank() => availableMushrooms[selectedMushroomId].rank;
+    public int GetMushroomRank() => availableMushrooms[selectedMushroomId].Rank;
 
     public PlayerDataSave GetPlayerDataSave()
     {
@@ -134,7 +143,7 @@ public class PlayerData : MonoBehaviour
 
         foreach(Mushroom mushroom in availableMushrooms)
         {
-            save.mushroomRanks.Add(mushroom.rank);
+            save.mushroomRanks.Add(mushroom.Rank);
             save.mushroomLvls.Add(mushroom.level);
             save.mushroomCurrentXps.Add(mushroom.currentXP);
 

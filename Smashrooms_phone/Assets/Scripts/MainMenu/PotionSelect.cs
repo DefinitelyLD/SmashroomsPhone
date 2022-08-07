@@ -88,10 +88,7 @@ public class PotionSelect : MonoBehaviour
         InventoryManager.instance.RemoveItem(ItemType.agilityPotion, 1);
 
         if(PlayerData.instance.endurancePotionUsed)
-        {
-            Debug.Log("removing");
-            InventoryManager.instance.RemoveItem(ItemType.endurancePotion, 1);
-        }
+        InventoryManager.instance.RemoveItem(ItemType.endurancePotion, 1);
     }
 
     public enum SelectedPotion

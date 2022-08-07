@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -15,6 +16,8 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI mTrophyText, xpText, mTokenText;
 
     [SerializeField] Button playAgainButton, exitButton;
+
+    [SerializeField] GameOverItems gameOverItems;
 
     private void Awake() => instance = this;
 
@@ -48,6 +51,24 @@ public class GameOverUI : MonoBehaviour
         mTokenText.text = "+" + mToken.ToString();
 
         PlayerDataSave save = SaveHelper.Deserialize<PlayerDataSave>(PlayerPrefs.GetString("player"));
+
+        if(win)
+        {
+            List<ItemType> itemsToAdd = gameOverItems.DropItems();
+            for(int i = 0; i < itemsToAdd.Count; i++)
+            {
+                if(save.droppedItems.Contains(itemsToAdd[i]))
+                {
+                    save.droppedItemsAmount[save.droppedItems.IndexOf(itemsToAdd[i])] ++;
+                }
+                else
+                {
+                    save.droppedItems.Add(itemsToAdd[i]);
+                    save.droppedItemsAmount.Add(1);
+                }
+            }
+        }
+
         save.trophies += mTrophy;
         save.currentXP += xp;
         save.tokens += mToken;

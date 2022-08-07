@@ -7,8 +7,13 @@ public class MushroomLevelUI : MonoBehaviour
 {
     [SerializeField] List<Slider> mushroomSliders = new List<Slider>();
     [SerializeField] List<TextMeshProUGUI> mushroomLevelsTexts = new List<TextMeshProUGUI>();
+    [SerializeField] List<Image> rankImages = new List<Image>();
 
-    private void Awake() => PlayerData.OnMushroomXpChaged += UpdateUI;
+    private void Awake()
+    {
+        PlayerData.OnMushroomXpChaged += UpdateUI;
+        Mushroom.OnRankChanged += UpdateRankIcon;
+    }
 
     private void UpdateUI(int id)
     {
@@ -18,5 +23,14 @@ public class MushroomLevelUI : MonoBehaviour
         mushroomSliders[id].value = availableMushrooms.level == Mushroom.MAX_LEVEL ? mushroomSliders[id].maxValue : availableMushrooms.currentXP;
     }
 
-    private void OnDestroy() => PlayerData.OnMushroomXpChaged -= UpdateUI;
+    private void UpdateRankIcon(int mushroomID, int rank)
+    {
+        rankImages[mushroomID].sprite = Storage.GetRankImage(rank);
+    }
+
+    private void OnDestroy() 
+    {
+        PlayerData.OnMushroomXpChaged -= UpdateUI;
+        Mushroom.OnRankChanged -= UpdateRankIcon;
+    } 
 }

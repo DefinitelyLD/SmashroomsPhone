@@ -3,13 +3,23 @@ using System;
 public class Mushroom
 {
     public static event Action<int> OnStatsChaged;
+    public static event Action<int, int> OnRankChanged;
 
     private const float LEVELS_TO_RANK_UP = 5; 
     public const int MAX_RANK = 3;
     public const int MAX_LEVEL = 20;
     public const float STATS_ON_RANK_UP = 0.5f;
 
-    public int rank = 1;
+    private int rank = 1;
+    public int Rank
+    {
+        get => rank;
+        set
+        {
+            rank = value;
+            OnRankChanged?.Invoke((int)mushroomType, rank);
+        }
+    }
     public int level;
     public int currentXP;
 
@@ -23,6 +33,7 @@ public class Mushroom
         rank = 1;
         level = 1;
 
+        mushroomType = mushroom;
         strength = Storage.GetMushroomStrength(mushroom);
         agility = Storage.GetMushroomAgility(mushroom);
         intelligence = Storage.GetMushroomIntelligence(mushroom);
