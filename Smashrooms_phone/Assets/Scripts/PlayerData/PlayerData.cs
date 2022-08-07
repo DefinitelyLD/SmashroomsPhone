@@ -78,11 +78,6 @@ public class PlayerData : MonoBehaviour
         availableMushrooms.Add(new Mushroom(MushroomType.fireMushroom));
     }
 
-    private void Update() 
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha1)) MushroomTokens += 100;
-    }
-
     public void LoadPlayerData(PlayerDataSave save)
     {
         int id = (int)save.selectedMushroom;

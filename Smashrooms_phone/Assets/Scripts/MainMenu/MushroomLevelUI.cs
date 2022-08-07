@@ -9,6 +9,8 @@ public class MushroomLevelUI : MonoBehaviour
     [SerializeField] List<TextMeshProUGUI> mushroomLevelsTexts = new List<TextMeshProUGUI>();
     [SerializeField] List<Image> rankImages = new List<Image>();
 
+    [SerializeField] Color mainThemeColor;
+
     private void Awake()
     {
         PlayerData.OnMushroomXpChaged += UpdateUI;
@@ -26,6 +28,7 @@ public class MushroomLevelUI : MonoBehaviour
     private void UpdateRankIcon(int mushroomID, int rank)
     {
         rankImages[mushroomID].sprite = Storage.GetRankImage(rank);
+        mushroomLevelsTexts[mushroomID].color = rank == 10 ? mainThemeColor : Color.white;
     }
 
     private void OnDestroy() 
