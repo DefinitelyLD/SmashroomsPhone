@@ -1,108 +1,42 @@
 {
     "m_SelectedDeviceId": "14303377",
     "m_SelectedPackage": {
-        "deviceId": "14303377",
-        "name": "net.oneplus.launcher",
-        "processId": 6500,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "14303377",
-            "name": "net.oneplus.launcher",
-            "processId": 6500,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 17231,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 17232,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 17233,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 19147,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 19148,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 19150,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 19149,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 19151,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 31042,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 31043,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 31044,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
-            "name": "com.DefaultCompany.Smashrooms",
-            "processId": 31045,
-            "exited": false
-        },
-        {
-            "deviceId": "14303377",
             "name": "com.DefaultCompany.Smashrooms",
             "processId": 31046,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "14303377",
             "name": "com.DefaultCompany.Smashrooms",
             "processId": 3125,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "14303377",
             "name": "com.DefaultCompany.Smashrooms",
             "processId": 3127,
+            "exited": true
+        },
+        {
+            "deviceId": "14303377",
+            "name": "net.oneplus.launcher",
+            "processId": 32250,
             "exited": false
+        },
+        {
+            "deviceId": "14303377",
+            "name": "com.DefaultCompany.Smashrooms",
+            "processId": 13924,
+            "exited": true
         }
     ],
     "m_Tags": {

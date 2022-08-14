@@ -16,7 +16,9 @@ public class SaveManager : MonoBehaviour
             instance = this;
         }
     }
-    private void Start() => Load();
+    private void Start() {
+        Load();
+    } 
 
     private void OnApplicationFocus(bool focusStatus) 
     {

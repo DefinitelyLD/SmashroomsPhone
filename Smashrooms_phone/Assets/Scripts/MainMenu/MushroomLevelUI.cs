@@ -22,7 +22,7 @@ public class MushroomLevelUI : MonoBehaviour
         Mushroom availableMushrooms = PlayerData.instance.availableMushrooms[id];
         mushroomLevelsTexts[id].text = "lv." + availableMushrooms.level.ToString();
         mushroomSliders[id].maxValue = Utility.levelXp[availableMushrooms.level - 1];
-        mushroomSliders[id].value = availableMushrooms.level == Mushroom.MAX_LEVEL ? mushroomSliders[id].maxValue : availableMushrooms.currentXP;
+        mushroomSliders[id].value = availableMushrooms.level == Mushroom.MAX_LEVEL ? mushroomSliders[id].maxValue : availableMushrooms.CurrentXP;
     }
 
     private void UpdateRankIcon(int mushroomID, int rank)

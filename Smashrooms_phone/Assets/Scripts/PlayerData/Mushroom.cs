@@ -21,8 +21,25 @@ public class Mushroom
         }
     }
     public int level;
-    public int currentXP;
+    private int currentXP;
 
+    public int CurrentXP
+    {
+        get => currentXP;
+
+        set
+        {
+            currentXP = value;
+            if(level == rank * LEVELS_TO_RANK_UP) 
+            currentXP = currentXP > Utility.levelXp[level - 1] ? Utility.levelXp[level - 1] : currentXP;
+
+            if(currentXP >= Utility.levelXp[level - 1] && level < rank * LEVELS_TO_RANK_UP &&  level < MAX_LEVEL)
+            {
+                currentXP = currentXP - Utility.levelXp[level - 1];
+                level += 1;
+            }
+        }
+    }
 
     public float strength, agility, intelligence, endurance;
 
@@ -40,19 +57,6 @@ public class Mushroom
         endurance = Storage.GetMushroomEndurance(mushroom);
     }
 
-    public void AddXp(int amount)
-    {
-        currentXP += amount;
-
-        if(level == rank * LEVELS_TO_RANK_UP) 
-        currentXP = currentXP > Utility.levelXp[level - 1] ? Utility.levelXp[level - 1] : currentXP;
-
-        if(currentXP >= Utility.levelXp[level - 1] && level < rank * LEVELS_TO_RANK_UP &&  level < MAX_LEVEL)
-        {
-            currentXP = currentXP - Utility.levelXp[level - 1];
-            level += 1;
-        }
-    }
 
     public void RankUP()
     {

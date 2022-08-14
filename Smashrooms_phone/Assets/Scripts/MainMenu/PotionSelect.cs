@@ -12,8 +12,8 @@ public class PotionSelect : MonoBehaviour
 
     private void Awake() 
     {
-        //continueButton.onClick.AddListener(() => {UsePotions(); LoadFightAsync.AllowSceneTransition(); SaveManager.instance.Save(); 
-        //AudioManager.instance.PlaySoundOnButtonClicked();});
+        continueButton.onClick.AddListener(() => {UsePotions(); LoadFightAsync.AllowSceneTransition(); SaveManager.instance.Save(); 
+        AudioManager.instance.PlaySoundOnButtonClicked();});
         play.onClick.AddListener(() => ToggleUI());
         exit.onClick.AddListener(() => {AudioManager.instance.PlaySoundOnButtonClicked(); ToggleUI();});
 

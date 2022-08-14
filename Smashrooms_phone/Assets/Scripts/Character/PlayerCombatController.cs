@@ -16,7 +16,7 @@ public class PlayerCombatController : MonoBehaviour
     {
         if( GameController.instance.gameOver) return;
 
-        if(Input.touchCount > 0)
+        /*if(Input.touchCount > 0)
         {
             var touch = Input.GetTouch(0);
 
@@ -26,12 +26,12 @@ public class PlayerCombatController : MonoBehaviour
                 if(touch.phase == TouchPhase.Began) fightActions.Block(true);
                 if(touch.phase == TouchPhase.Ended) fightActions.Block(false);
             }
-        }
-        /*if(Input.GetMouseButtonDown(0) && !Input.GetMouseButton(1)) fightActions.Attack();
+        }*/
+        if(Input.GetMouseButtonDown(0) && !Input.GetMouseButton(1)) fightActions.Attack();
         if(Input.GetMouseButtonDown(1) && !Input.GetMouseButton(0)) fightActions.Block(true);
         if(Input.GetMouseButtonUp(1)) fightActions.Block(false);
         if(Input.GetKeyDown(KeyCode.A)) fightActions.Dash(-1);
-        if(Input.GetKeyDown(KeyCode.D)) fightActions.Dash(1);*/
+        if(Input.GetKeyDown(KeyCode.D)) fightActions.Dash(1);
     }
 
     private void UseDash(float direction) 

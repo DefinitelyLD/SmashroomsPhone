@@ -22,4 +22,6 @@ public class PlayerDataSave
 
     public List<ItemType> droppedItems = new List<ItemType>();
     public List<int> droppedItemsAmount = new List<int>();
+
+    public int xpFromFight;
 }

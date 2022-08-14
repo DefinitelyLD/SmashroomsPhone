@@ -50,7 +50,9 @@ public class Stats : MonoBehaviour
 
         maxHealth = Storage.BASIC_HEALTH + Storage.HEALTH_PER_STAT * enduranceStatAmount * 
                     (1 + save.mushroomLvls[(int) selectedMushroom] / 10f);
-                    
+
+        maxHealth = 20;
+
         hpSlider.maxValue = maxHealth;
         CurrentHealth = maxHealth;
         

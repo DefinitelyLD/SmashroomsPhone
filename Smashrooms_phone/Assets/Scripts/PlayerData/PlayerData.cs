@@ -51,12 +51,12 @@ public class PlayerData : MonoBehaviour
         set 
         {
             currentXP = value;
-            if(currentXP >= Utility.levelXp[currentLvl - 1] && currentLvl < 10)
+            if(currentXP >= Utility.levelXp[currentLvl - 1] && currentLvl < 100)
             {
                 currentXP = currentXP - Utility.levelXp[currentLvl - 1];
                 CurrentLvl += 1;
             }
-            xpSlider.value = currentLvl == 10 ? xpSlider.maxValue : currentXP;
+            xpSlider.value = currentLvl == 100 ? xpSlider.maxValue : currentXP;
         }
     }
 
@@ -90,12 +90,20 @@ public class PlayerData : MonoBehaviour
 
         CurrentLvl = save.currentLvl;
         CurrentXP = save.currentXP;
+        CurrentXP += save.xpFromFight;
         Trophies = save.trophies;
         MushroomTokens = save.tokens;
-        AddMushroomXp(id, save.mushroomCurrentXps[id] - availableMushrooms[id].currentXP);
+
+        for(int i = 0; i < availableMushrooms.Count; i++)
+            availableMushrooms[i].level = save.mushroomLvls[i];
 
         for(int i = 0; i < availableMushrooms.Count; i++)
             availableMushrooms[i].Rank = save.mushroomRanks[i];
+
+        for(int i = 0; i < availableMushrooms.Count; i++)
+            availableMushrooms[i].CurrentXP = save.mushroomCurrentXps[i];
+
+        OnMushroomXpChaged?.Invoke(id);
 
         for(int i = 0; i < save.droppedItems.Count; i++)
             InventoryManager.instance.AddItem(save.droppedItems[i], save.droppedItemsAmount[i]);
@@ -104,16 +112,25 @@ public class PlayerData : MonoBehaviour
         save.droppedItemsAmount.Clear();
     }
 
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Alpha1)) CurrentXP += 100;
+        if(Input.GetKeyDown(KeyCode.Alpha2)) 
+        {
+            availableMushrooms[0].CurrentXP += 100;
+            OnMushroomXpChaged?.Invoke(0);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3)) 
+        {
+            availableMushrooms[1].CurrentXP += 100;
+            OnMushroomXpChaged?.Invoke(1);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha4)) MushroomTokens += 100;
+    }
+
     public void SelectMushroom(int id)
     {
         selectedMushroomId = id;
         OnMushroomSelected.Invoke(selectedMushroomId);
-    }
-
-    public void AddMushroomXp(int selectedMushroom, int amount)
-    {
-        availableMushrooms[selectedMushroom].AddXp(amount);
-        OnMushroomXpChaged?.Invoke(selectedMushroom);
     }
 
     public bool CanRankUpMushroom() => availableMushrooms[selectedMushroomId].CanRankUp();
@@ -140,7 +157,7 @@ public class PlayerData : MonoBehaviour
         {
             save.mushroomRanks.Add(mushroom.Rank);
             save.mushroomLvls.Add(mushroom.level);
-            save.mushroomCurrentXps.Add(mushroom.currentXP);
+            save.mushroomCurrentXps.Add(mushroom.CurrentXP);
 
             save.mushroomStrength.Add(mushroom.strength);
             save.mushroomAgility.Add(mushroom.agility);

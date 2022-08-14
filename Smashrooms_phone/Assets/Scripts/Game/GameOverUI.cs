@@ -70,7 +70,7 @@ public class GameOverUI : MonoBehaviour
         }
 
         save.trophies += mTrophy;
-        save.currentXP += xp;
+        save.xpFromFight = xp;
         save.tokens += mToken;
         save.mushroomCurrentXps[(int)save.selectedMushroom] += xp;
 
